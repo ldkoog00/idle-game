@@ -1,14 +1,22 @@
 var score = 5;
 
-var title = new Title('Welcome to the Game'); // Create a title element
-var button = new Button('hello', btnPress);   // Create a button element
-var hidden = new Button('Boo!');
-hidden.hide();
-var scr = new Text(score);                    // Create a text element
+var title = new Title('clicker game');
 
-var add = new Button('1', btnPress);
+var rowSection = new Section('row');
+var column1 = new Section('col');    
+var column2 = new Section('col'); 
+
+var addCat = new Button('Adopt Cat', btnPress);
 var sub = new Button('-1', btnPress2);
 var scoreBoard = new Text(score);
+
+column1.add(addCat);
+column1.add(sub);
+column2.add(scoreboard);
+
+rowSection.add(column1);  
+rowSection.add(column2);
+
 
 setInterval(btnPress, 1000);
 
@@ -24,7 +32,7 @@ function btnPress() {
   if (score >= 10){
     textWeight(10);
     textStroke(0);
-    text(200, 200, "You Loose");
+    text("You Loose");
   
   }
 }
@@ -34,21 +42,14 @@ function btnPress2() {
   if (score <= 0){
     textWeight(10);
     textStroke(0);
-    text(200, 200, "You Win");
+    text("You Win");
   
   }
   if (score >= 10){
     textWeight(10);
     textStroke(0);
-    text(200, 200, "You Loose");
-  }
-  score++;         // Increase the score
-  scr.edit(score); // Update the page with the new score
-  if(score > 10) {
-    hidden.show();
-  }
-  if(score > 15) {
-    hidden.hide(500);
+    text("You Loose");
+  
   }
 }
 
